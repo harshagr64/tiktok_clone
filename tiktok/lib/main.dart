@@ -1,0 +1,25 @@
+import "package:flutter/material.dart";
+import "navigation.dart";
+import "package:firebase_core/firebase_core.dart";
+import "register.dart";
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  return runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Tik Tok',
+      home: Navigation(),
+      routes: {
+        Register.routeName: (ctx) => Register(),
+        Login.routeName: (ctx) => Login(),
+      },
+    );
+  }
+}
